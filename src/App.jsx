@@ -1,15 +1,15 @@
-import './App.css'
-import Location from './components/Location'
-import WeatherInfo from './components/WeatherInfo'
+import "./App.css";
+import { WeatherDataProvider } from "./components/WeatherDataContext";
+import WeatherInfo from "./components/WeatherInfo";
 
 function App() {
-
   return (
-    <div className="App">
-      <Location />
-      
-    </div>
-  )
+    <WeatherDataProvider>
+      <div className="app">
+        <WeatherInfo />
+      </div>
+    </WeatherDataProvider>
+  );
 }
 
-export default App
+export default App;

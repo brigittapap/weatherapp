@@ -53,6 +53,18 @@ function WeatherInfo() {
               <h1>{weatherData.main.temp.toFixed()}°C</h1>
             ) : null}
           </div>
+          <div className="tempm">
+            <p>Max temperature: </p>
+            {weatherData.main ? (
+              <p> {weatherData.main.temp_max.toFixed()}°C</p>
+            ) : null}
+          </div>
+          <div className="tempm">
+            <p>Min temperature: </p>
+            {weatherData.main ? (
+              <p>{weatherData.main.temp_min.toFixed()}°C</p>
+            ) : null}
+          </div>
           <div className="description">
             {weatherData.weather ? (
               <p>{weatherData.weather[0].description}</p>
@@ -77,29 +89,31 @@ function WeatherInfo() {
         <div className="bottom">
           <div className="feels">
             {weatherData.main ? (
-              <p className="bold">{weatherData.main.feels_like.toFixed()}°F</p>
+              <h3 className="bold">
+                {weatherData.main.feels_like.toFixed()}°C
+              </h3>
             ) : null}
-            <p>Feels Like</p>
+            <h4>Feels Like</h4>
           </div>
           <div className="humidity">
             {weatherData.main ? (
-              <p className="bold">{weatherData.main.humidity}%</p>
+              <h3 className="bold">{weatherData.main.humidity}%</h3>
             ) : null}
-            <p>Humidity</p>
+            <h4>Humidity</h4>
           </div>
           <div className="wind">
             {weatherData.wind ? (
-              <p className="bold">{weatherData.wind.speed.toFixed()} MPH</p>
+              <h3 className="bold">{weatherData.wind.speed.toFixed()} MPH</h3>
             ) : null}
-            <p>Wind Speed</p>
+            <h4>Wind Speed</h4>
           </div>
           <div className="wind">
             {weatherData.clouds.all ? (
-              <p className="bold">{weatherData.clouds.all} %</p>
+              <h3 className="bold">{weatherData.clouds.all} %</h3>
             ) : (
               "No clouds today"
             )}
-            <p>Cloudiness</p>
+            <h4>Cloudiness</h4>
           </div>
         </div>
       </div>

@@ -78,7 +78,7 @@ button:focus-visible {
 
 .app:before {
   content: '';
-  background: url("https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg") no-repeat center center/cover;
+  background: url("https://www.pixel4k.com/wp-content/uploads/2018/11/clouds-sunset-sky-4k_1541117838.jpg.webp") no-repeat center center/cover;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -134,6 +134,14 @@ button:focus-visible {
   font-size: 1.2rem;
 }
 
+.app .tempm {
+  font-size: 1rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: -2rem;
+}
+
 .app .date {
   /* position: relative; */
   right: -100%;
@@ -150,7 +158,8 @@ button:focus-visible {
   margin: 1rem auto;
   padding: 1rem;
   border-radius: 12px;
-  background-color: rgba(255,255,255, 0.2);
+  color: #535bf2;
+  background-color: rgba(255,255,255, 0.5);
 }
 
 .bold {

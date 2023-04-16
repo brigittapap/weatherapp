@@ -119,7 +119,11 @@ function WeatherInfo() {
       </div>
     );
   } else {
-    return <div></div>;
+    return (
+      <div>
+        <p>No data avilable. Loading...</p>
+      </div>
+    );
   }
 }
 

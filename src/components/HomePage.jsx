@@ -3,13 +3,15 @@ import React, { createContext, useState } from "react";
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import TabPanel from "@mui/lab/TabPanel";
 import WeatherInfoSmall from "./WeatherInfoSmall";
 import { useContext, useEffect } from "react";
 import { WeatherDataContext } from "./WeatherDataContext";
 import WeatherInfo from "./WeatherInfo";
+import TabContext from "@mui/lab/TabContext";
 
 function HomePage() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState("1");
   const [weatherData, setWeatherData] = useContext(WeatherDataContext);
 
   const handleChange = (event, newValue) => {
@@ -21,33 +23,45 @@ function HomePage() {
   if (Object.keys(weatherData).length != 0) {
     return (
       <div>
-        <Tabs
-          value={value}
-          // onChange={handleChange} //TODO
-          centered
-        >
-          <Tab label="Today" />
-          <Tab label="Tomorrow" />
-        </Tabs>
-        <WeatherInfo />
-        <div className="container"></div>
+        <TabContext value={value}>
+          <Tabs
+            value={value}
+            onChange={handleChange} //TODO
+            centered
+          >
+            <Tab label="Today" value="1" />
+            <Tab label="Tomorrow" value="2" />
+            <Tab label="Forecast" value="3" />
+          </Tabs>
+          <TabPanel value="1">
+            <WeatherInfo />
+          </TabPanel>
+          <TabPanel value="2">No data available</TabPanel>
+          <TabPanel value="3">No adata available</TabPanel>
+        </TabContext>
       </div>
     );
   } else {
     return (
       <div>
-        <Tabs
-          value={value}
-          // onChange={handleChange} //TODO
-          centered
-        >
-          <Tab label="Today" />
-          <Tab label="Tomorrow" />
-        </Tabs>
-        {defaultLocations.map((location) => (
-          <WeatherInfoSmall location={location} />
-        ))}
-        <div className="container"></div>
+        <TabContext value={value}>
+          <Tabs
+            value={value}
+            onChange={handleChange} //TODO
+            centered
+          >
+            <Tab label="Today" value="1" />
+            <Tab label="Tomorrow" value="2" />
+            <Tab label="Forecast" value="3" />
+          </Tabs>
+          <TabPanel value="1">
+            {defaultLocations.map((location) => (
+              <WeatherInfoSmall location={location} />
+            ))}
+          </TabPanel>
+          <TabPanel value="2">No data available</TabPanel>
+          <TabPanel value="3">No adata available</TabPanel>
+        </TabContext>
       </div>
     );
   }

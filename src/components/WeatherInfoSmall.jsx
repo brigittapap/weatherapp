@@ -6,8 +6,6 @@ function WeatherInfoSmall({ location }) {
   const [locationdata, setLocationData] = useState([]);
 
   useEffect(() => {
-    console.log("use Effect");
-
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=3401a98f67244a2761343403f0115876`

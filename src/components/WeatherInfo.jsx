@@ -86,7 +86,7 @@ function WeatherInfo() {
           </div>
         </div>
 
-        <div className="bottom">
+        <div className="bottom-small">
           <div className="feels">
             {weatherData.main ? (
               <h3 className="bold">

@@ -66,7 +66,7 @@ function WeatherInfoSmall({ location }) {
     return (
       <div className="bottom-small">
         <div>
-          <p>No data avilable</p>
+          <p>No data avilable. Loading...</p>
         </div>
       </div>
     );

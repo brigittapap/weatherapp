@@ -15,6 +15,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -69,7 +70,6 @@ button:focus-visible {
   }
 }
 
-
 .app .location {
   font-size: 3.0em;
   font-weight: bold;
@@ -78,7 +78,8 @@ button:focus-visible {
 
 .app:before {
   content: '';
-  background: url("https://www.pixel4k.com/wp-content/uploads/2018/11/clouds-sunset-sky-4k_1541117838.jpg.webp") no-repeat center center/cover;
+  /* background: url("https://t3.ftcdn.net/jpg/03/94/79/36/360_F_394793630_n4mZQY784HGNkh1ch8ymZUO3OqxefDRI.jpg") center center/cover; */
+  background-color: #8283a5;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -107,7 +108,7 @@ button:focus-visible {
 
 .container {
   max-width: 700px;
-  height: 700px;
+  /* height: 700px; */
   margin: auto;
   padding: 0 1rem;
   position: relative;
@@ -159,6 +160,18 @@ button:focus-visible {
   padding: 1rem;
   border-radius: 12px;
   color: #535bf2;
+  background-color: rgba(255,255,255, 0.5);
+}
+
+.app .bottom-small {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  color: #62649b;
   background-color: rgba(255,255,255, 0.5);
 }
 

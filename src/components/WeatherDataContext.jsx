@@ -34,10 +34,18 @@ export const WeatherDataProvider = (props) => {
     console.log("fetchForecast");
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=3401a98f67244a2761343403f0115876`;
 
-    const response = await axios.get(url);
+    try {
+      const response = await axios.get(url);
+      setForecast(response.data);
+    } catch (error) {
+      console.log(error);
 
-    console.log(response.data);
-    setForecast(response.data);
+      const responseCode = error.response.status;
+
+      if (responseCode === 404) {
+        alert("Location not found");
+      }
+    }
   };
 
   const setHome = () => {

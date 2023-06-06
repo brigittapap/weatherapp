@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 
 const getTomorrowDateString = () => {
   const tomorrow = new Date();
@@ -7,7 +7,9 @@ const getTomorrowDateString = () => {
   return tomorrowString;
 };
 
-const TomorrowForecast = ({ forecast }) => {
+const TomorrowForecast = () => {
+  const { forecast } = useContext(WeatherDataContext);
+
   const [tomorrowForecast, setTomorrowForecast] = useState(null);
 
   useEffect(() => {

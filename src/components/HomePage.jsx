@@ -13,7 +13,7 @@ import TomorrowForecast from "./TomorrowForecast";
 
 function HomePage() {
   const [value, setValue] = React.useState("1");
-  const { data: weatherData, forecast } = useContext(WeatherDataContext);
+  const { data: weatherData } = useContext(WeatherDataContext);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -38,7 +38,7 @@ function HomePage() {
             <WeatherInfo />
           </TabPanel>
           <TabPanel value="2">
-            <TomorrowForecast forecast={forecast} />
+            <TomorrowForecast />
           </TabPanel>
           <TabPanel value="3">No adata available</TabPanel>
         </TabContext>

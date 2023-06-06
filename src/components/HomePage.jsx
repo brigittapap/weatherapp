@@ -9,10 +9,11 @@ import { useContext, useEffect } from "react";
 import { WeatherDataContext } from "./WeatherDataContext";
 import WeatherInfo from "./WeatherInfo";
 import TabContext from "@mui/lab/TabContext";
+import TomorrowForecast from "./TomorrowForecast";
 
 function HomePage() {
   const [value, setValue] = React.useState("1");
-  const [weatherData, setWeatherData] = useContext(WeatherDataContext);
+  const { data: weatherData, forecast } = useContext(WeatherDataContext);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -36,7 +37,9 @@ function HomePage() {
           <TabPanel value="1">
             <WeatherInfo />
           </TabPanel>
-          <TabPanel value="2">No data available</TabPanel>
+          <TabPanel value="2">
+            <TomorrowForecast forecast={forecast} />
+          </TabPanel>
           <TabPanel value="3">No adata available</TabPanel>
         </TabContext>
       </div>

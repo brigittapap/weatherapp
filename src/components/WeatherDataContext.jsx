@@ -12,13 +12,15 @@ export const WeatherDataContext = createContext();
 
 export const WeatherDataProvider = (props) => {
   const [location, setLocation] = useState();
+  const [forecast, setForecast] = useState(null);
 
   const [data, setData] = useState({});
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=3401a98f67244a2761343403f0115876`;
 
-  const searchLocation = (event) => {
+  const searchLocation = async (event) => {
     if (event.key === "Enter") {
+      await fetchForecast(location);
       axios.get(url).then((response) => {
         setData(response.data);
         console.log(response.data);
@@ -28,13 +30,23 @@ export const WeatherDataProvider = (props) => {
     }
   };
 
+  const fetchForecast = async (location) => {
+    console.log("fetchForecast");
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=3401a98f67244a2761343403f0115876`;
+
+    const response = await axios.get(url);
+
+    console.log(response.data);
+    setForecast(response.data);
+  };
+
   const setHome = () => {
     console.log("Hooome");
     setData("");
   };
 
   return (
-    <WeatherDataContext.Provider value={[data, setData]}>
+    <WeatherDataContext.Provider value={{ data, setData, forecast }}>
       <div className="app">
         <Box sx={{ flexGrow: 1 }}>
           <AppBar

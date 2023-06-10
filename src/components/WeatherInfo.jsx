@@ -1,5 +1,5 @@
-import { WeatherDataContext } from "./WeatherDataContext";
 import { useContext } from "react";
+import { WeatherDataContext } from "./WeatherDataContext";
 
 function WeatherInfo() {
   const { data: weatherData } = useContext(WeatherDataContext);
@@ -40,53 +40,51 @@ function WeatherInfo() {
   if (Object.keys(weatherData).length != 0) {
     console.log(weatherData);
     return (
-      <div className="container">
-        <div className="top">
-          <div className="location">
-            <p>
-              {weatherData.name}, {weatherData.sys.country}
-            </p>
-          </div>
-          <div className="date">{dateBuilder(new Date())}</div>
-          <div className="temp">
-            {weatherData.main ? (
-              <h1>{weatherData.main.temp.toFixed()}°C</h1>
-            ) : null}
-          </div>
-          <div className="tempm">
-            <p>Max temperature: </p>
-            {weatherData.main ? (
-              <p> {weatherData.main.temp_max.toFixed()}°C</p>
-            ) : null}
-          </div>
-          <div className="tempm">
-            <p>Min temperature: </p>
-            {weatherData.main ? (
-              <p>{weatherData.main.temp_min.toFixed()}°C</p>
-            ) : null}
-          </div>
-          <div className="description">
-            {weatherData.weather ? (
-              <p>{weatherData.weather[0].description}</p>
-            ) : null}
-          </div>
-          <div className="sunrise">
-            Sunrise:{" "}
-            {new Date(weatherData.sys.sunrise * 1000 + weatherData.timezone)
-              .toUTCString()
-              .slice(-11, -4)}{" "}
-            AM
-          </div>
-          <div className="sunset">
-            Sunset:{" "}
-            {new Date(weatherData.sys.sunset * 1000 + weatherData.timezone)
-              .toUTCString()
-              .slice(-11, -4)}{" "}
-            PM
-          </div>
+      <div className="top">
+        <div className="location">
+          <p>
+            {weatherData.name}, {weatherData.sys.country}
+          </p>
+        </div>
+        <div className="date">{dateBuilder(new Date())}</div>
+        <div className="temp">
+          {weatherData.main ? (
+            <h1>{weatherData.main.temp.toFixed()}°C</h1>
+          ) : null}
+        </div>
+        <div className="tempm">
+          <p>Max temperature: </p>
+          {weatherData.main ? (
+            <p> {weatherData.main.temp_max.toFixed()}°C</p>
+          ) : null}
+        </div>
+        <div className="tempm">
+          <p>Min temperature: </p>
+          {weatherData.main ? (
+            <p>{weatherData.main.temp_min.toFixed()}°C</p>
+          ) : null}
+        </div>
+        <div className="description">
+          {weatherData.weather ? (
+            <p>{weatherData.weather[0].description}</p>
+          ) : null}
+        </div>
+        <div className="sunrise">
+          Sunrise:{" "}
+          {new Date(weatherData.sys.sunrise * 1000 + weatherData.timezone)
+            .toUTCString()
+            .slice(-11, -4)}{" "}
+          AM
+        </div>
+        <div className="sunset">
+          Sunset:{" "}
+          {new Date(weatherData.sys.sunset * 1000 + weatherData.timezone)
+            .toUTCString()
+            .slice(-11, -4)}{" "}
+          PM
         </div>
 
-        <div className="bottom-small">
+        {/* <div className="bottom-small">
           <div className="feels">
             {weatherData.main ? (
               <h3 className="bold">
@@ -115,7 +113,7 @@ function WeatherInfo() {
             )}
             <h4>Cloudiness</h4>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   } else {

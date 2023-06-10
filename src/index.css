@@ -28,6 +28,7 @@ a:hover {
 body {
   margin: 0;
   /* display: flex; */
+  background-color: #687f83;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -76,18 +77,6 @@ button:focus-visible {
   font-style: italic;
 }
 
-.app:before {
-  content: '';
-  /* background: url("https://t3.ftcdn.net/jpg/03/94/79/36/360_F_394793630_n4mZQY784HGNkh1ch8ymZUO3OqxefDRI.jpg") center center/cover; */
-  background-color: #8283a5;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
 .app .search {
   text-align: center;
   padding: 1rem;
@@ -107,20 +96,20 @@ button:focus-visible {
 }
 
 .container {
-  max-width: 700px;
+  /* max-width: 700px; */
   /* height: 700px; */
-  margin: auto;
-  padding: 0 1rem;
+  margin: 10px 10px;
+  padding: 15px 3rem;
   position: relative;
-  top: 10%;
+  /* top: 10%; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
 }
 
 .app .top {
   width: 100%;
-  margin: 1rem auto;
+  margin: 3rem auto;
 }
 
 .app .description {
@@ -172,9 +161,16 @@ button:focus-visible {
   padding: 1rem;
   border-radius: 12px;
   color: #62649b;
-  background-color: rgba(255,255,255, 0.5);
+  background-color: rgba(255,255,255, 0.1);
 }
 
 .bold {
   font-weight: 700;
+}
+
+.app .bottom-data {
+  display: inline; /* the default for span */
+  width: 100px;
+  height: 100px;
+  padding: 5px;
 }

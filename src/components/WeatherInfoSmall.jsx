@@ -1,6 +1,5 @@
-import { WeatherDataContext } from "./WeatherDataContext";
-import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 function WeatherInfoSmall({ location }) {
   const [locationdata, setLocationData] = useState([]);

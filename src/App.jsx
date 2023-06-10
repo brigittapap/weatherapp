@@ -8,7 +8,6 @@ function App() {
     <WeatherDataProvider>
       <div className="app">
         <HomePage />
-        {/* <WeatherInfo /> */}
       </div>
     </WeatherDataProvider>
   );

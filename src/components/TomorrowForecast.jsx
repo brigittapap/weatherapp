@@ -1,4 +1,5 @@
 import { Fragment, useContext, useEffect, useState } from "react";
+import { WeatherDataContext } from "./WeatherDataContext";
 
 const getTomorrowDateString = () => {
   const tomorrow = new Date();
@@ -28,12 +29,14 @@ const TomorrowForecast = () => {
 
   return (
     <>
-      {tomorrowForecast.map((item) => (
-        <Fragment key={`${item.dt}-weather-info`}>
-          <p>{item.dt_txt}</p>
-          <p>{item.main.temp.toFixed()}</p>
-        </Fragment>
-      ))}
+      <div className="bottom-small">
+        {tomorrowForecast.map((item) => (
+          <Fragment key={`${item.dt}-weather-info`}>
+            <p>{item.dt_txt}</p>
+            <p>{item.main.temp.toFixed()}</p>
+          </Fragment>
+        ))}
+      </div>
     </>
   );
 };

@@ -1,8 +1,8 @@
-import { WeatherDataContext } from "./WeatherDataContext";
+import { WeatherDataContext } from "./WeatherDataProvider";
 import { useContext } from "react";
 
 function WeatherInfo() {
-  const [weatherData, setWeatherData] = useContext(WeatherDataContext);
+  const [weatherData] = useContext(WeatherDataContext);
 
   const dateBuilder = (d) => {
     let months = [

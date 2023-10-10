@@ -1,5 +1,5 @@
 import "./App.css";
-import { WeatherDataProvider } from "./components/WeatherDataContext";
+import { WeatherDataProvider } from "./components/WeatherDataProvider";
 import WeatherInfo from "./components/WeatherInfo";
 
 function App() {

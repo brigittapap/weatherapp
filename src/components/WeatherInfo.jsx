@@ -1,11 +1,17 @@
 import { WeatherDataContext } from "./WeatherDataProvider";
 import { useContext } from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import cloudy2 from "../images/animated/cloudy2.svg";
+import day from "../images/animated/day.svg";
+import north from "../images/north.svg";
 
 function WeatherInfo() {
   const [weatherData] = useContext(WeatherDataContext);
 
   const dateBuilder = (d) => {
-    let months = [
+    const months = [
       "January",
       "February",
       "March",
@@ -19,7 +25,7 @@ function WeatherInfo() {
       "November",
       "December",
     ];
-    let days = [
+    const days = [
       "Sunday",
       "Monday",
       "Tuesday",
@@ -29,94 +35,102 @@ function WeatherInfo() {
       "Saturday",
     ];
 
-    let day = days[d.getDay()];
-    let date = d.getDate();
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
+    const day = days[d.getDay()];
+    const date = d.getDate();
+    const month = months[d.getMonth()];
+    const year = d.getFullYear();
 
-    return `${day} ${date} ${month} ${year}`;
+    return `${day}, ${month} ${date}, ${year}`;
   };
 
-  if (Object.keys(weatherData).length != 0) {
-    console.log(weatherData);
+  const renderImage = () => {
+    console.log("Render logoooo");
+    if (typeof weatherData.main.temp !== "undefined") {
+      if (weatherData.main.temp > 16) {
+        return <img src={day} alt="Sunny" className="small-image" />;
+      } else if (weatherData.main.temp <= 0) {
+        return <img src={north} />;
+      } else if (weatherData.main.temp < 16) {
+        return <img src={cloudy2} />;
+      }
+    }
+  };
+
+  if (Object.keys(weatherData).length !== 0) {
     return (
-      <div className="container">
-        <div className="top">
-          <div className="location">
-            <p>
-              {weatherData.name}, {weatherData.sys.country}
-            </p>
-          </div>
-          <div className="date">{dateBuilder(new Date())}</div>
-          <div className="temp">
-            {weatherData.main ? (
-              <h1>{weatherData.main.temp.toFixed()}°C</h1>
-            ) : null}
-          </div>
-          <div className="tempm">
-            <p>Max temperature: </p>
-            {weatherData.main ? (
-              <p> {weatherData.main.temp_max.toFixed()}°C</p>
-            ) : null}
-          </div>
-          <div className="tempm">
-            <p>Min temperature: </p>
-            {weatherData.main ? (
-              <p>{weatherData.main.temp_min.toFixed()}°C</p>
-            ) : null}
-          </div>
-          <div className="description">
-            {weatherData.weather ? (
-              <p>{weatherData.weather[0].description}</p>
-            ) : null}
-          </div>
-          <div className="sunrise">
+      <Card
+        variant="outlined"
+        sx={{
+          maxWidth: 800,
+          margin: "0 auto",
+          backgroundColor: "rgba(240, 240, 240, 0.5)", // Semi-transparent backgroundthe background color
+        }}
+      >
+        <CardContent>
+          <Typography variant="h2" component="div">
+            {weatherData.name}, {weatherData.sys.country}
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            {dateBuilder(new Date())}
+          </Typography>
+          <Typography variant="h3" component="div">
+            {renderImage()}
+
+            {weatherData.main ? `${weatherData.main.temp.toFixed()}°C` : null}
+          </Typography>
+          <Typography variant="h5" color="textSecondary">
+            Max temperature:{" "}
+            {weatherData.main
+              ? `${weatherData.main.temp_max.toFixed()}°C`
+              : null}
+          </Typography>
+          <Typography variant="h5" color="textSecondary">
+            Min temperature:{" "}
+            {weatherData.main
+              ? `${weatherData.main.temp_min.toFixed()}°C`
+              : null}
+          </Typography>
+          <Typography variant="h5" component="div">
+            {weatherData.weather ? weatherData.weather[0].description : null}
+          </Typography>
+          <Typography variant="h5" color="textSecondary">
             Sunrise:{" "}
             {new Date(weatherData.sys.sunrise * 1000 + weatherData.timezone)
               .toUTCString()
               .slice(-11, -4)}{" "}
             AM
-          </div>
-          <div className="sunset">
+          </Typography>
+          <Typography variant="h5" color="textSecondary">
             Sunset:{" "}
             {new Date(weatherData.sys.sunset * 1000 + weatherData.timezone)
               .toUTCString()
               .slice(-11, -4)}{" "}
             PM
-          </div>
-        </div>
-
-        <div className="bottom">
-          <div className="feels">
-            {weatherData.main ? (
-              <h3 className="bold">
-                {weatherData.main.feels_like.toFixed()}°C
-              </h3>
-            ) : null}
-            <h4>Feels Like</h4>
-          </div>
-          <div className="humidity">
-            {weatherData.main ? (
-              <h3 className="bold">{weatherData.main.humidity}%</h3>
-            ) : null}
-            <h4>Humidity</h4>
-          </div>
-          <div className="wind">
-            {weatherData.wind ? (
-              <h3 className="bold">{weatherData.wind.speed.toFixed()} MPH</h3>
-            ) : null}
-            <h4>Wind Speed</h4>
-          </div>
-          <div className="wind">
-            {weatherData.clouds.all ? (
-              <h3 className="bold">{weatherData.clouds.all} %</h3>
-            ) : (
-              "No clouds today"
-            )}
-            <h4>Cloudiness</h4>
-          </div>
-        </div>
-      </div>
+          </Typography>
+          <Typography variant="h5" color="textSecondary">
+            Feels Like:{" "}
+            {weatherData.main
+              ? `${weatherData.main.feels_like.toFixed()}°C`
+              : null}
+          </Typography>
+          <Typography variant="h5" color="textSecondary">
+            Humidity:{" "}
+            {weatherData.main ? `${weatherData.main.humidity}%` : null}
+          </Typography>
+          <Typography variant="h5" color="textSecondary">
+            Wind Speed:{" "}
+            {weatherData.wind
+              ? `${weatherData.wind.speed.toFixed()} MPH`
+              : null}
+          </Typography>
+          <Typography variant="h5" color="textSecondary">
+            Cloudiness:{" "}
+            {weatherData.clouds.all
+              ? `${weatherData.clouds.all} %`
+              : "No clouds today"}
+          </Typography>
+        </CardContent>
+      </Card>
     );
   } else {
     return <div></div>;

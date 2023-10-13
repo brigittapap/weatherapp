@@ -78,7 +78,7 @@ button:focus-visible {
 
 .app:before {
   content: '';
-  background: url("https://www.pixel4k.com/wp-content/uploads/2018/11/clouds-sunset-sky-4k_1541117838.jpg.webp") no-repeat center center/cover;
+  background: url("./images/25501.jpg") no-repeat center center/cover;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -164,4 +164,10 @@ button:focus-visible {
 
 .bold {
   font-weight: 700;
+}
+
+/* styles.css */
+.small-image {
+  width: 30px;
+  height: 30px;
 }
